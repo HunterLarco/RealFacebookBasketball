@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'start',
+1 verbose cli   '--host',
+1 verbose cli   '10.0.0.20' ]
+2 info using npm@3.3.12
+3 info using node@v5.2.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle applicationid@~prestart: applicationid@
+6 silly lifecycle applicationid@~prestart: no script for prestart, continuing
+7 info lifecycle applicationid@~start: applicationid@
+8 verbose lifecycle applicationid@~start: unsafe-perm in lifecycle true
+9 verbose lifecycle applicationid@~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/Larco/Documents/Github/RealFacebookBasketball/Server/node_modules/.bin:/Users/Larco/.rvm/gems/ruby-2.2.1/bin:/Users/Larco/.rvm/gems/ruby-2.2.1@global/bin:/Users/Larco/.rvm/rubies/ruby-2.2.1/bin:/Users/Larco/.rbenv/shims:/Users/Larco/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Applications/Muse:/Users/Larco/.rvm/bin
+10 verbose lifecycle applicationid@~start: CWD: /Users/Larco/Documents/Github/RealFacebookBasketball/Server
+11 silly lifecycle applicationid@~start: Args: [ '-c', 'dev_appserver.py . "10.0.0.20"' ]
+12 silly lifecycle applicationid@~start: Returned: code: 1  signal: null
+13 info lifecycle applicationid@~start: Failed to exec start script
+14 verbose stack Error: applicationid@ start: `dev_appserver.py . "10.0.0.20"`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:88:13)
+14 verbose stack     at EventEmitter.emit (events.js:173:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:88:13)
+14 verbose stack     at ChildProcess.emit (events.js:173:7)
+14 verbose stack     at maybeClose (internal/child_process.js:819:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:212:5)
+15 verbose pkgid applicationid@
+16 verbose cwd /Users/Larco/Documents/Github/RealFacebookBasketball/Server
+17 error Darwin 14.5.0
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start" "--host" "10.0.0.20"
+19 error node v5.2.0
+20 error npm  v3.3.12
+21 error code ELIFECYCLE
+22 error applicationid@ start: `dev_appserver.py . "10.0.0.20"`
+22 error Exit status 1
+23 error Failed at the applicationid@ start script 'dev_appserver.py . "10.0.0.20"'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the applicationid package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     dev_appserver.py . "10.0.0.20"
+23 error You can get their info via:
+23 error     npm owner ls applicationid
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

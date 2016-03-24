@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style></style>
+
+<title></title>
+
+<meta charset='utf-8'/>
+
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='mobile-web-app-capable' content='yes'>
+
+<meta content='minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no' name='viewport'/>
+
+</head>
+<body>
+
+
+</body>
+<script>
+(function(){
+  
+  var movement = {
+    rotation: {
+      vertical: 0,
+      horizontal: 0,
+      sidetoside: 0
+    }
+  }
+  
+  window.addEventListener('load', Init);
+  function Init(){
+    ListenToGyroscope();
+    setInterval(SendMovement, 100);
+  }
+  
+  function ListenToGyroscope(){
+    var eventname = window.DeviceOrientationEvent ? 'deviceorientation' : 'MozOrientation';
+    window.addEventListener(eventname, RegisterOrientationEvent, true);
+  }
+  function RegisterOrientationEvent(event){
+    movement.rotation.vertical   = 90-event.beta;
+    movement.rotation.horizontal = -event.alpha;
+    movement.rotation.sidetoside = -(-event.gamma);
+  }
+  
+  function SendMovement(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('POST', '/mobile', true);
+    xhttp.send(JSON.stringify(movement));
+  }
+  
+})();
+</script>
+</html>
