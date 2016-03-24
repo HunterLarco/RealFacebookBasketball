@@ -31,7 +31,7 @@
   window.addEventListener('load', Init);
   function Init(){
     ListenToGyroscope();
-    setInterval(SendMovement, 1000);
+    setInterval(SendMovement, 100);
   }
   
   function ListenToGyroscope(){
@@ -39,7 +39,7 @@
     window.addEventListener(eventname, RegisterOrientationEvent, true);
   }
   function RegisterOrientationEvent(event){
-    movement.rotation.vertical   = -event.beta;
+    movement.rotation.vertical   = 90-event.beta;
     movement.rotation.horizontal = -event.alpha;
     movement.rotation.sidetoside = -(-event.gamma);
   }
