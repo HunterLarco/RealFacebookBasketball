@@ -1,3 +1,15 @@
+from google.appengine.ext.webapp import template
 import webapp2
+import os
 
-app = webapp2.WSGIApplication([], debug=True)
+
+class DefaultHandler(webapp2.RequestHandler):
+  def get(self):
+    template_values = {}
+    path = os.path.join(os.path.dirname(__file__), 'templates/gyrotest.html')
+    self.response.out.write(template.render(path, template_values))
+
+
+app = webapp2.WSGIApplication([
+  ('.*', DefaultHandler)
+], debug=True)
