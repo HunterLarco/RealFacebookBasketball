@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+
+.perspective{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  perspective:1000px;
+  -webkit-perspective:1000px;
+}
+
+.phone{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:rotateX(45deg);
+  width:370px;
+  margin-left:-185px;
+  height:660px;
+  margin-top:-330px;
+  background:rgb(235,235,235);
+  overflow:hidden;
+}
+
+.thumb{
+  background:rgb(200,200,200);
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  position:absolute;
+  top:100px;
+  left:100px;
+}
+
+</style>
+
 <title></title>
 
 <meta charset='utf-8'/>
@@ -14,14 +52,55 @@
 <body>
 
 
+<div class='perspective'>
+  <div class='phone'>
+    <div class='thumb'></div>
+  </div>
+</div>
+
 
 </body>
 <script>
 (function(){
   
+  var movement = {
+    rotation: {
+      vertical: 0,
+      horizontal: 0,
+      sidetoside: 0
+    }
+  }
+  
+  var position = {
+    x: 0,
+    y: 0
+  }
+  
   window.addEventListener('load', Init);
   function Init(){
-    console.log('init');
+    ListenToGyroscope();
+  }
+  
+  function ListenToGyroscope(){
+    var eventname = window.DeviceOrientationEvent ? 'deviceorientation' : 'MozOrientation';
+    window.addEventListener(eventname, RegisterOrientationEvent, true);
+  }
+  function RegisterOrientationEvent(event){
+    movement.rotation.vertical   = -event.beta;
+    movement.rotation.horizontal = -event.alpha;
+    movement.rotation.sidetoside = event.gamma;
+    
+    UpdatePhone();
+  }
+  
+  function UpdatePhone(){
+    var phone = document.querySelector('.phone');
+    
+    var rotateX = 'rotateX('+movement.rotation.vertical+'deg)';
+    var rotateY = 'rotateY('+movement.rotation.sidetoside+'deg)';
+    var rotateZ = 'rotateZ('+movement.rotation.horizontal+'deg)';
+    
+    phone.style.transform = rotateX + ' ' + rotateY + ' ' + rotateZ;
   }
   
 })();
